@@ -1,25 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 
+import Sidebar from './components/Sidebar/Sidebar.jsx';
+import Player from './components/Player/Player.jsx';
+import Main from './components/Main/Main.jsx';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App flex flex-col h-screen ">
+            <div className="top flex-1 flex overflow-y-hidden">
+                <Sidebar/>
+                <Main/>
+            </div>
+            <div className="bottom">
+                <Player/>
+            </div>
+        </div>
+    );
 }
 
 export default App;
