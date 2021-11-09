@@ -8,11 +8,16 @@ module.exports = {
         "gray-900-spotify": "#121212",
         "gray-800-spotify": "#181818",
         "gray-700-spotify": "#282828"
+      },
+      fontFamily: {
+        main: ['Montserrat'],
       }
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      // borderWidth: ['last'],
+    },
   },
   plugins: [],
 }

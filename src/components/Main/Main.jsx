@@ -1,12 +1,103 @@
-import React from 'react'
+import React from "react";
+
+import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
+import { BiUserCircle } from "react-icons/bi";
+import { AiOutlineSearch } from "react-icons/ai";
 
 function Main() {
-    return (
-        <div className="overflow-y-auto">
-            Main
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod totam alias nulla repellendus cumque quisquam nostrum asperiores assumenda dignissimos, magni doloribus soluta, quibusdam in possimus neque mollitia illo impedit. Eos sequi adipisci qui ullam doloribus? Libero, culpa similique necessitatibus nesciunt nam saepe facilis illum enim veritatis quos quaerat corporis omnis id sunt. Adipisci nam minima accusantium porro corrupti quia eligendi, esse, amet, fugit vel sequi nostrum veniam ratione reprehenderit. Voluptatibus accusamus inventore pariatur debitis exercitationem totam voluptate. Quia aperiam corporis voluptates earum commodi incidunt quisquam animi. Minus, obcaecati doloribus expedita voluptatibus dignissimos accusantium, maiores iste aliquid velit delectus deserunt, veniam ut officia excepturi reiciendis sunt aliquam tenetur sequi odio recusandae. Amet voluptate et nesciunt aliquid incidunt optio! Autem dolor harum, a quas expedita accusamus odit necessitatibus, cumque aliquam nemo similique? Iste unde nobis voluptas placeat soluta maxime id eligendi quis labore sit minus iure, ex exercitationem vel repellat, dolorem nihil itaque dolore molestiae recusandae quos voluptates a temporibus! Harum officia molestiae ullam debitis nulla. Id, perferendis, odit accusamus labore ducimus ullam voluptatum numquam fugit sunt distinctio autem? Labore ipsa molestiae, deserunt ad fugit nostrum libero incidunt, enim odit earum dolor voluptate. Magni iure corporis quidem minus deleniti in molestiae reiciendis recusandae sed provident dolor dolorum vero, repellendus sint quisquam cupiditate? Itaque, animi sapiente! Rerum necessitatibus iusto veritatis quia facilis, debitis pariatur autem voluptates qui reprehenderit placeat eius tempora! Ipsa nam quaerat tempore placeat omnis. Temporibus consequatur perspiciatis, eum consectetur et eligendi ex architecto hic veritatis laudantium debitis voluptas dolores libero.
+
+  const dummyAlbum = {
+    title: "Certified Lover Boy",
+    description:
+      "Amazing Acoustic Covers updated every week.",
+    followers: 244745,
+    cover: 'https://media.pitchfork.com/photos/613214a114458bf5df99f2a9/1:1/w_320/Drake-Certified-Lover-Boy.png'
+  };
+
+  const dummyArr = new Array(5).fill(dummyAlbum);
+
+  const DummyRow = () => {
+      return dummyArr.map(each => {
+          console.log(each.cover)
+        return (
+            <div class="album flex flex-col w-1/5 px-4 py-4 text-gray-400">
+              <a href="">
+                
+                <img src={each.cover} alt="qweqeqw" />
+              </a>
+              <span className="font-semibold mb-2 mt-4 text-gray-300">
+                {each.title}
+              </span>
+              <p className="album-desc mb-4 text-sm text-gray-300">
+                {each.description}
+              </p>
+              <span className="album-followers tracking-widest text-xs">
+                {each.followers} FOLLOWERS
+              </span>
+            </div>
+          );
+      })
+  }
+
+  const Row = () => {
+      return (
+        <div className="row mt-12">
+          <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-4">
+            Recently Played
+          </h3>
+
+          <div className="row">
+            {/* ALBUMS GO HERE */}
+            <div className="albums flex flex-row -mx-4">
+              <DummyRow />
+            </div>
+          </div>
         </div>
-    )
+      );
+  }
+
+  return (
+    <div className="overflow-y-auto flex-1 bg-gray-800-spotify">
+      {/* TOP BAR  */}
+      <div className="top-bar flex items-center justify-between px-4 py-2">
+        <div className="arrows flex items-center text-gray-300">
+          <a href="" className="p-1 fill-current">
+            <VscChevronLeft size={30} />
+          </a>
+          <a href="" className="p-1 fill-current">
+            <VscChevronRight size={30} />
+          </a>
+
+          <div className="searchbar ml-4 box-border searchbar flex relative items-center">
+            <div className="absolute ml-2">
+              <AiOutlineSearch size={18} />
+            </div>
+            <input
+              className=" text-gray-800 placeholder-gray-800 rounded-full pl-8 py-1"
+              type="text"
+              placeholder="Search..."
+            />
+          </div>
+        </div>
+
+        <div className="username flex items-center px-8 text-gray-300">
+          <BiUserCircle size={34} />
+          <span className="ml-1 text-xs">b.pre</span>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+
+      <div className="container mx-auto px-32 text-white">
+        <h1 className="text-7xl font-semibold text-white my-16">Home</h1>
+        <Row />
+        <Row />
+        <Row />
+        <Row />
+        <Row />
+      </div>
+    </div>
+  );
 }
 
-export default Main
+export default Main;
