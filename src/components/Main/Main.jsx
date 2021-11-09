@@ -6,19 +6,41 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 function Main() {
 
-  const dummyAlbum = {
-    title: "Certified Lover Boy",
-    description:
-      "Amazing Acoustic Covers updated every week.",
-    followers: 244745,
-    cover: 'https://media.pitchfork.com/photos/613214a114458bf5df99f2a9/1:1/w_320/Drake-Certified-Lover-Boy.png'
-  };
-
-  const dummyArr = new Array(5).fill(dummyAlbum);
+    const albums = [{
+        title: "Peripheral Vision",
+        description: "Amazing Acoustic Covers updated every week.",
+        followers: 658903,
+        cover: "https://upload.wikimedia.org/wikipedia/en/2/25/Turnover_-_Peripheral_Vision.jpg",
+        artist: "Turonver",
+      }, {
+        title: "Certified Lover Boy",
+        description: "Amazing Covers updated every week.",
+        followers: 244745,
+        cover: "https://media.pitchfork.com/photos/613214a114458bf5df99f2a9/1:1/w_320/Drake-Certified-Lover-Boy.png",
+      }, {
+        title: "Altogether",
+        description: "Amazing Acoustic Covers updated every week.",
+        followers: 75684,
+        cover: "https://media.pitchfork.com/photos/5db364230c9c6a0008f6ba60/1:1/w_320/Turnover_Altogether.jpg",
+        artist: "Turnover",
+      }, {
+        title: "Certified Lover Boy",
+        description: "Amazing Acoustic Covers updated every week.",
+        followers: 876457,
+        cover: "https://media.pitchfork.com/photos/613214a114458bf5df99f2a9/1:1/w_320/Drake-Certified-Lover-Boy.png",
+      }, {
+        title: "Donda",
+        description: "Amazing Acoustic Covers updated every week.",
+        followers: 452343,
+        cover: "https://images0.persgroep.net/rcs/nQaYybDGjv41PxtF-TuzTa9O8HU/diocontent/206956827/_fitwidth/763?appId=93a17a8fd81db0de025c8abd1cca1279&quality=0.8",
+      }
+    ];
 
   const DummyRow = () => {
+
+    const dummyArr = albums;
+
       return dummyArr.map(each => {
-          console.log(each.cover)
         return (
             <div class="album flex flex-col w-1/5 px-4 py-4 text-gray-400">
               <a href="">
@@ -28,7 +50,7 @@ function Main() {
               <span className="font-semibold mb-2 mt-4 text-gray-300">
                 {each.title}
               </span>
-              <p className="album-desc mb-4 text-sm text-gray-300">
+              <p className="album-desc mb-4 text-sm text-gray-300 md:hidden">
                 {each.description}
               </p>
               <span className="album-followers tracking-widest text-xs">
@@ -81,14 +103,14 @@ function Main() {
         </div>
 
         <div className="username flex items-center px-8 text-gray-300">
-          <BiUserCircle size={34} />
-          <span className="ml-1 text-xs">b.pre</span>
+          <BiUserCircle size={24} />
+          <span className="ml-2 text-sm">b.pre</span>
         </div>
       </div>
 
       {/* CONTENT */}
 
-      <div className="container mx-auto px-32 text-white">
+      <div className="container mx-auto px-8 text-white">
         <h1 className="text-7xl font-semibold text-white my-16">Home</h1>
         <Row />
         <Row />
