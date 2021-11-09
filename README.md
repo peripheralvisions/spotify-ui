@@ -11,3 +11,4 @@ Demo:
 ## Made with:
 * TailwindCSS
 * React (Create React App)
+* React Icons
