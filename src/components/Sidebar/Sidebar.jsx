@@ -111,7 +111,7 @@ function Sidebar() {
 
       </div>
 
-      <div className="h-16 flex align-center justify-around items-center border-t-2 border-gray-800 ">
+      <div className="h-16 flex align-center justify-around items-center border-t border-gray-400 ">
         <a href="" className="flex items-center">
             <IoIosAddCircleOutline size={30} />
           <span className="ml-3">New Playlist</span>
