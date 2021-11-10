@@ -34,16 +34,16 @@ function Player() {
         <div className="main-controls flex flex-col justify-around ">
           <div className="main-controls-buttons flex flex-row justify-center items-center">
             <div className="mr-8">
-              <FaRandom size={16} />
+              <FaRandom size={18} />
             </div>
             <div className="mr-8">
-              <AiFillFastBackward size={21} />
+              <AiFillFastBackward size={24} />
             </div>
             <div className="mr-8">
-              <BiPlayCircle size={34} />
+              <BiPlayCircle size={40} />
             </div>
             <div className="mr-8">
-              <AiFillFastForward size={21} />
+              <AiFillFastForward size={24} />
             </div>
             <div className="">
               <IoMdRepeat size={21} />

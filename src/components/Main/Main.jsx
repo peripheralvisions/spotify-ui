@@ -61,7 +61,7 @@ function Main() {
       name: "Pi'erre Bourne",
       followers: 354753,
       image:
-        "https://images.complex.com/complex/images/c_crop,h_1071,w_1061,x_0,y_11/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/lwg4ovpbq9xzybpktnno/pierre-bourne-tajwop?fimg-ssr-default",
+        "https://media.pitchfork.com/photos/5ea34904cfaa12000863f18b/16:9/w_1408,h_792,c_limit/pierrebourne1.jpg",
       verified: true,
       },
 
@@ -77,7 +77,7 @@ function Main() {
       name: "Turnover",
       followers: 354753,
       image:
-        "https://alchetron.com/cdn/turnover-band-143fc96c-b4a7-40bb-a3d7-b4a01801969-resize-750.jpg",
+        "https://photos.bandsintown.com/thumb/9078233.jpeg",
       verified: true,
       },
 
@@ -93,7 +93,7 @@ function Main() {
       name: "Citizen",
       followers: 354753,
       image:
-        "https://www.upsetmagazine.com/images/article/Artist-Images/C/Citizen/_crop1500x1000/citizen-mar21.jpg",
+        "https://m.22slides.com/alexalberti/img9668-1093870.jpg?auto=format&w=800&s=08872e9737897989ac128377e6639280",
       verified: true,
       },
   ];
@@ -107,7 +107,7 @@ function Main() {
             <h1 className="text-7xl font-semibold text-white">{title}</h1>
             <h2 className="text-3xl mt-4">{caption}</h2>
           </div>
-          <span className="py-2 border-white bg-white text-black font-bold px-5 border-4 rounded-3xl mt-6">
+          <span className="py-2 border-white bg-white text-black font-semibold px-5 border-4 rounded-3xl mt-6">
             Try it now. <span className="ml-2">▶</span>
           </span>
         </div>
@@ -119,7 +119,7 @@ function Main() {
   const Row = ({ children, title = "Category" }) => {
     return (
       <div className="row mt-12">
-        <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-4">
+        <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-12">
           {title}
         </h3>
 
@@ -160,7 +160,7 @@ function Main() {
   const AlbumCard = ({ data }) => {
     return (
       <div class="album flex flex-col w-1/5 px-4 py-4 text-gray-400">
-        <div className="rounded-md overflow-hidden block">
+        <div className="rounded-sm overflow-hidden block">
           <img src={data.cover} className="block" alt="qweqeqw" />
         </div>
         <span className="font-semibold mb-2 mt-4 text-gray-300">
@@ -209,7 +209,7 @@ function Main() {
         >
           {/* <img src={data.image} className="w-auto h-full" alt="qweqeqw" /> */}
         </div>
-        <span className="font-semibol text-xl font-semibold mt-6 text-gray-300 flex items-center">
+        <span className="font-semibol text-xl font-semibold mt-6 text-white flex items-center truncate">
           {data.name}
           {
             data.verified ? <span className="ml-2">
@@ -218,7 +218,7 @@ function Main() {
           }
         </span>
         <span className="text-sm mt-2">Followers {data.followers}</span>
-        <span className="text-sm px-6 py-2 mt-6 border-2 rounded-full bg-white text-black font-medium">
+        <span className="text-xs px-6 py-2 mt-6 border-2 rounded-full bg-white text-black font-medium">
           + FOLLOW
         </span>
       </div>
@@ -229,7 +229,7 @@ function Main() {
     return (
       <Row title={rowTitle}>
         <div className="artists px-6 flex flex-row -mx-4">
-          {artists.map((each) => (
+          {scrambleArray(artists).map((each) => (
             <ArtistCard data={each} />
           ))}
         </div>
