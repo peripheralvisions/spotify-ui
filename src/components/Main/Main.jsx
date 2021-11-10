@@ -54,6 +54,38 @@ function Main() {
     },
   ];
 
+  const artists = [
+    {
+      name: "Pi'erre Bourne",
+      followers: 354753,
+      image: "https://images.complex.com/complex/images/c_crop,h_1071,w_1061,x_0,y_11/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/lwg4ovpbq9xzybpktnno/pierre-bourne-tajwop?fimg-ssr-default",
+    },
+
+    {
+      name: "Drake",
+      followers: 354753,
+      image: "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTQ3NTI2OTA4NzY5MjE2MTI4/drake_photo_by_prince_williams_wireimage_getty_479503454.jpg",
+    },
+
+    {
+      name: "Turnover",
+      followers: 354753,
+      image: "https://alchetron.com/cdn/turnover-band-143fc96c-b4a7-40bb-a3d7-b4a01801969-resize-750.jpg",
+    },
+
+    {
+      name: "Kanye",
+      followers: 354753,
+      image: "https://images0.persgroep.net/rcs/xhac8jNm-5aeE2Coga0cZvwwBLk/diocontent/205406526/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.8",
+    },
+
+    {
+      name: "Pi'erre Bourne",
+      followers: 354753,
+      image: "https://images.complex.com/complex/images/c_crop,h_1071,w_1061,x_0,y_11/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/lwg4ovpbq9xzybpktnno/pierre-bourne-tajwop?fimg-ssr-default",
+    },
+  ]
+
   //Containers
   const MainContainer = ({ children, title, caption = "Music awaits." }) => {
     return (
@@ -67,7 +99,6 @@ function Main() {
             Try it now. <span className="ml-2">▶</span>
           </span>
         </div>
-
         {children}
       </div>
     );
@@ -75,7 +106,7 @@ function Main() {
 
   const Row = ({ children, title }) => {
     return (
-      <div className="row mt-12">
+      <div className="row mt-12 ">
         <div className="row">
           <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-4">
             {title}
@@ -129,7 +160,7 @@ function Main() {
           {data.description}
         </p>
         <span className="album-followers tracking-widest text-xs">
-          {data.followers} FOLLOWERS
+          {data.followers} LISTENERS
         </span>
       </div>
     );
@@ -151,6 +182,45 @@ function Main() {
     );
   };
 
+  //Artists
+
+  const ArtistCard = ({data}) => {
+    return (
+      <div class="artist flex flex-col items-center w-1/5 px-4 py-4 text-gray-400">
+        <div className="overflow-hidden block h-44 w-44 rounded-full" style={{
+            backgroundImage: `url("${data.image}")`,
+            backgroundColor: 'pink',
+            backgroundPosition: "center center",
+            backgroundSize: "cover",
+            backgroundRepeat: 'no-repeat'
+          }}>
+          {/* <img src={data.image} className="w-auto h-full" alt="qweqeqw" /> */}
+        </div>
+        <span className="font-semibol text-xl font-semibold mt-6 text-gray-300">
+          {data.name}
+        </span>
+        <span className="text-sm mt-2">
+          Followers {data.followers}
+        </span>
+        <span className="text-sm px-6 py-2 mt-8 border-2 rounded-full bg-white text-black font-medium">
+          + FOLLOW
+        </span>
+      </div>
+    );
+  };
+
+  const RowArtists = () => {
+    return (
+      <Row>
+        <div className="albums flex flex-row -mx-4">
+          {
+            artists.map(each => <ArtistCard data={each} />)
+          }
+        </div>
+      </Row>
+    );
+  };
+
   //Routes
   const Home = () => {
     return (
@@ -167,10 +237,10 @@ function Main() {
   const Browse = () => {
     return (
       <MainContainer title="Browse" caption="Find new music.">
-        <RowAlbums />
-        <RowAlbums />
-        <RowAlbums />
-        <RowAlbums />
+        <RowArtists />
+        <RowArtists />
+        <RowArtists />
+        <RowArtists />
       </MainContainer>
     );
   };
