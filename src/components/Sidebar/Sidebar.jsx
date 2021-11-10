@@ -6,6 +6,8 @@ import {VscRadioTower} from 'react-icons/vsc';
 
 import {IoIosAddCircleOutline} from 'react-icons/io';
 
+import {Link} from 'react-router-dom';
+
 console.log(AiOutlineHome);
 
 
@@ -86,7 +88,9 @@ function Sidebar() {
       <div className="py-6">
         <ul>
           {navElements.map((each, idx, self) => {
-            return <NavElement key={idx} {...each} />;
+            return <Link to={each.value.toLocaleLowerCase()}>
+              <NavElement key={idx} {...each} />
+            </Link>;
           })}
         </ul>
       </div>
