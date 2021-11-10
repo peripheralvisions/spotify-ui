@@ -13,6 +13,8 @@ import {
 } from "react-router-dom";
 
 function Main() {
+
+  //Demo data
   const albums = [
     {
       title: "Peripheral Vision",
@@ -38,11 +40,11 @@ function Main() {
       artist: "Turnover",
     },
     {
-      title: "Certified Lover Boy",
+      title: "Pi'erre Bourne: The Life of Pi'erre 5",
       description: "Amazing Acoustic Covers updated every week.",
       followers: 876457,
       cover:
-        "https://media.pitchfork.com/photos/613214a114458bf5df99f2a9/1:1/w_320/Drake-Certified-Lover-Boy.png",
+        "https://media.pitchfork.com/photos/60c21d66b60b284a5751d220/1:1/w_600/Pi%E2%80%99erre%20Bourne:%20The%20Life%20of%20Pi%E2%80%99erre%205.jpeg ",
     },
     {
       title: "Donda",
@@ -53,15 +55,42 @@ function Main() {
     },
   ];
 
+  //Containers
+  const MainContainer = ({ children, title }) => {
+    return (
+      <div className="container mx-auto px-8 text-white">
+        <h1 className="text-7xl font-semibold text-white my-16">{title}</h1>
+        {children}
+      </div>
+    );
+  };
 
+  const Row = ({ children, title }) => {
+    return (
+      <div className="row mt-12">
+        <div className="row">
+
+          <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-4">
+            {title}
+          </h3>
+
+          {children}
+
+        </div>
+      </div>
+    );
+  };
+
+
+  //Helper
   const scrambleArray = (targetArr) => {
-    
     let len = targetArr.length;
 
     const cp = [...targetArr];
     const newArr = [];
 
-    const getRandIdx = (targetArr) => Math.floor(Math.random() * targetArr.length);
+    const getRandIdx = (targetArr) =>
+      Math.floor(Math.random() * targetArr.length);
 
     while (len--) {
       const [el] = cp.splice(getRandIdx(cp), 1);
@@ -69,135 +98,131 @@ function Main() {
     }
 
     return newArr;
+  };
+
+  //Albums
+  const DummyAlbums = () => {
+    const dummyArr = scrambleArray(albums);
+    console.log(dummyArr);
+    // const dummyArr = albums;
+
+    return dummyArr.map((each) => {
+      return <AlbumCard data={each} />;
+    });
+  };
+
+  const AlbumCard = ({data}) => {
+    return (
+      <div class="album flex flex-col w-1/5 px-4 py-4 text-gray-400">
+        <a href="">
+          <img src={data.cover} alt="qweqeqw" />
+        </a>
+        <span className="font-semibold mb-2 mt-4 text-gray-300">
+          {data.title}
+        </span>
+        <p className="album-desc mb-4 text-sm text-gray-300 md:hidden">
+          {data.description}
+        </p>
+        <span className="album-followers tracking-widest text-xs">
+          {data.followers} FOLLOWERS
+        </span>
+      </div>
+    );
+
   }
 
-    const DummyRow = () => {
+  const RowAlbums = () => {
 
-      const dummyArr = scrambleArray(albums);
-      console.log(dummyArr);
-      // const dummyArr = albums;
+    const dummyArr = scrambleArray(albums);
+    console.log(dummyArr);
 
-      return dummyArr.map((each) => {
-        return (
-          <div class="album flex flex-col w-1/5 px-4 py-4 text-gray-400">
-            <a href="">
-              <img src={each.cover} alt="qweqeqw" />
-            </a>
-            <span className="font-semibold mb-2 mt-4 text-gray-300">
-              {each.title}
-            </span>
-            <p className="album-desc mb-4 text-sm text-gray-300 md:hidden">
-              {each.description}
-            </p>
-            <span className="album-followers tracking-widest text-xs">
-              {each.followers} FOLLOWERS
-            </span>
-          </div>
-        );
-      });
-    };
-
-    const RowAlbums = () => {
-      return (
-        <div className="row mt-12">
-          <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-4">
-            Recently Played
-          </h3>
-
-          <div className="row">
-            {/* ALBUMS GO HERE */}
-            <div className="albums flex flex-row -mx-4">
-              <DummyRow />
-            </div>
+    return (
+      <Row title="Recently Played">
+        <div className="row">
+          {/* ALBUMS GO HERE */}
+          <div className="albums flex flex-row -mx-4">
+            <DummyAlbums />
           </div>
         </div>
-      );
-    };
+      </Row>
+    );
+  };
 
-    const Home = () => {
-      return (
-        <MainContainer title="Home">
-          <RowAlbums />
-          <RowAlbums />
-          <RowAlbums />
-          <RowAlbums />
-          <RowAlbums />
-        </MainContainer>
-      );
-    };
-
-    const MainContainer = ({ children, title }) => {
-      return (
-        <div className="container mx-auto px-8 text-white">
-          <h1 className="text-7xl font-semibold text-white my-16">{title}</h1>
-          {children}
-        </div>
-      );
-    };
-
-    const Browse = () => {
-      return (
-        <MainContainer title="Browse">
-          <RowAlbums />
-          <RowAlbums />
-          <RowAlbums />
-          <RowAlbums />
-        </MainContainer>
-      )
-    };
-
-    const Radio = () => {
-      return (
-        <MainContainer title="Radio">
+  //Routes
+  const Home = () => {
+    return (
+      <MainContainer title="Home">
+        <h2 className="text-4xl">Everything You need.</h2>
+        <RowAlbums />
+        <RowAlbums />
+        <RowAlbums />
         <RowAlbums />
         <RowAlbums />
       </MainContainer>
-      )
-    }
+    );
+  };
 
-
-
+  const Browse = () => {
     return (
-      <div className="overflow-y-auto flex-1 bg-gray-800-spotify">
-        {/* TOP BAR  */}
-        <div className="top-bar flex items-center justify-between px-4 py-2">
-          <div className="arrows flex items-center text-gray-300">
-            <a href="" className="p-1 fill-current">
-              <VscChevronLeft size={30} />
-            </a>
-            <a href="" className="p-1 fill-current">
-              <VscChevronRight size={30} />
-            </a>
+      <MainContainer title="Browse">
+        <h2 className="text-4xl">The music that feels You.</h2>
+        <RowAlbums />
+        <RowAlbums />
+        <RowAlbums />
+        <RowAlbums />
+      </MainContainer>
+    );
+  };
 
-            <div className="searchbar ml-4 box-border searchbar flex relative items-center">
-              <div className="absolute ml-2">
-                <AiOutlineSearch size={18} />
-              </div>
-              <input
-                className=" text-gray-800 placeholder-gray-800 rounded-full pl-8 py-1"
-                type="text"
-                placeholder="Search..."
-              />
+  const Radio = () => {
+    return (
+      <MainContainer title="Radio">
+        <RowAlbums />
+        <RowAlbums />
+      </MainContainer>
+    );
+  };
+
+  return (
+    <div className="overflow-y-auto flex-1 bg-gray-800-spotify">
+      {/* TOP BAR  */}
+      <div className="top-bar flex items-center justify-between px-4 py-2">
+        <div className="arrows flex items-center text-gray-300">
+          <a href="" className="p-1 fill-current">
+            <VscChevronLeft size={30} />
+          </a>
+          <a href="" className="p-1 fill-current">
+            <VscChevronRight size={30} />
+          </a>
+
+          <div className="searchbar ml-4 box-border searchbar flex relative items-center">
+            <div className="absolute ml-2">
+              <AiOutlineSearch size={18} />
             </div>
-          </div>
-
-          <div className="username flex items-center px-8 text-gray-300">
-            <BiUserCircle size={24} />
-            <span className="ml-2 text-sm">b.pre</span>
+            <input
+              className=" text-gray-800 placeholder-gray-800 rounded-full pl-8 py-1"
+              type="text"
+              placeholder="Search..."
+            />
           </div>
         </div>
 
-        {/* CONTENT */}
-
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/browse" element={<Browse />} />
-          <Route exact path="/radio" element={<Radio />} />
-
-        </Routes>
+        <div className="username flex items-center px-8 text-gray-300">
+          <BiUserCircle size={24} />
+          <span className="ml-2 text-sm">b.pre</span>
+        </div>
       </div>
-    );
-  }
 
-  export default Main;
+      {/* CONTENT */}
+
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/browse" element={<Browse />} />
+        <Route exact path="/radio" element={<Radio />} />
+      </Routes>
+    </div>
+  );
+}
+
+export default Main;
