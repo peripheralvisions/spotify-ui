@@ -51,7 +51,7 @@ function Player() {
           </div>
           <div className="main-controls-progress flex items-center">
             <span>1:36</span>
-            <div className="line w-80 h-1 rounded-xl mx-4 bg-gray-400"></div>
+            <div className="line w-96 h-1 rounded-xl mx-4 bg-gray-400"></div>
             3:42
           </div>
         </div>
