@@ -12,3 +12,4 @@ Demo:
 * TailwindCSS
 * React (Create React App)
 * React Icons
+* React Router (version 6)
