@@ -13,7 +13,6 @@ import {
 } from "react-router-dom";
 
 function Main() {
-
   //Demo data
   const albums = [
     {
@@ -56,10 +55,17 @@ function Main() {
   ];
 
   //Containers
-  const MainContainer = ({ children, title }) => {
+  const MainContainer = ({ children, title, caption = "Music awaits." }) => {
     return (
       <div className="container mx-auto px-8 text-white">
-        <h1 className="text-7xl font-semibold text-white my-16">{title}</h1>
+        <div className="bg-gradient-to-r xl:from-red-400 rounded-lg px-24 -mx-24 py-8 mt-12 h-72 flex flex-col items-start justify-around">
+          <div>
+          <h1 className="text-7xl font-semibold text-white">{title}</h1>
+          <h2 className="text-3xl mt-4">{caption}</h2>
+          </div>
+          <span className="py-2 px-5 border-4 rounded-3xl">Play now.</span>
+        </div>
+
         {children}
       </div>
     );
@@ -69,18 +75,15 @@ function Main() {
     return (
       <div className="row mt-12">
         <div className="row">
-
           <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-4">
             {title}
           </h3>
 
           {children}
-
         </div>
       </div>
     );
   };
-
 
   //Helper
   const scrambleArray = (targetArr) => {
@@ -111,7 +114,7 @@ function Main() {
     });
   };
 
-  const AlbumCard = ({data}) => {
+  const AlbumCard = ({ data }) => {
     return (
       <div class="album flex flex-col w-1/5 px-4 py-4 text-gray-400">
         <a href="">
@@ -128,11 +131,9 @@ function Main() {
         </span>
       </div>
     );
-
-  }
+  };
 
   const RowAlbums = () => {
-
     const dummyArr = scrambleArray(albums);
     console.log(dummyArr);
 
@@ -151,8 +152,7 @@ function Main() {
   //Routes
   const Home = () => {
     return (
-      <MainContainer title="Home">
-        <h2 className="text-4xl">Everything You need.</h2>
+      <MainContainer title="Home" caption="Everything You need.">
         <RowAlbums />
         <RowAlbums />
         <RowAlbums />
@@ -164,8 +164,7 @@ function Main() {
 
   const Browse = () => {
     return (
-      <MainContainer title="Browse">
-        <h2 className="text-4xl">The music that feels You.</h2>
+      <MainContainer title="Browse" caption="Find new music.">
         <RowAlbums />
         <RowAlbums />
         <RowAlbums />
@@ -176,8 +175,7 @@ function Main() {
 
   const Radio = () => {
     return (
-      <MainContainer title="Radio">
-        <h2 className="text-4xl">Find new tunes.</h2>
+      <MainContainer title="Radio" caption="Mix and match.">
         <RowAlbums />
         <RowAlbums />
       </MainContainer>
