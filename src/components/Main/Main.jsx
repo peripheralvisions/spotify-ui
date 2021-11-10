@@ -60,10 +60,10 @@ function Main() {
       <div className="container mx-auto px-8 text-white">
         <div className="bg-gradient-to-r xl:from-red-400 rounded-lg px-24 -mx-24 py-8 mt-12 h-72 flex flex-col items-start justify-around">
           <div>
-          <h1 className="text-7xl font-semibold text-white">{title}</h1>
-          <h2 className="text-3xl mt-4">{caption}</h2>
+            <h1 className="text-7xl font-semibold text-white">{title}</h1>
+            <h2 className="text-3xl mt-4">{caption}</h2>
           </div>
-          <span className="py-2 px-5 border-4 rounded-3xl">Play now.</span>
+          <span className="py-2 border-white bg-white text-black font-semibold px-5 border-4 rounded-3xl mt-6">Try it now. <span className="ml-2">▶</span></span>
         </div>
 
         {children}
