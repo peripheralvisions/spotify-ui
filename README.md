@@ -6,9 +6,10 @@ For the purpose of experimenting with TailwindCSS I decided to clone the interfa
 This is just the front-end and the application is not interactive (yet).
 
 Demo:
-![Demo](https://i.imgur.com/G91EDbh.png)
+![Demo](https://i.imgur.com/Sq4kW36.png)
 
 ## Made with:
 * TailwindCSS
 * React (Create React App)
 * React Icons
+* React Router (version 6)
