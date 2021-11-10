@@ -4,7 +4,7 @@ import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { BiUserCircle } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
 
-import {GoVerified} from 'react-icons/go';
+import { GoVerified } from "react-icons/go";
 
 import {
   BrowserRouter as Router,
@@ -12,6 +12,7 @@ import {
   Route,
   Link,
   Navigate,
+  Redirect,
 } from "react-router-dom";
 
 function Main() {
@@ -63,7 +64,7 @@ function Main() {
       image:
         "https://media.pitchfork.com/photos/5ea34904cfaa12000863f18b/16:9/w_1408,h_792,c_limit/pierrebourne1.jpg",
       verified: true,
-      },
+    },
 
     {
       name: "Drake",
@@ -71,15 +72,14 @@ function Main() {
       image:
         "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTQ3NTI2OTA4NzY5MjE2MTI4/drake_photo_by_prince_williams_wireimage_getty_479503454.jpg",
       verified: true,
-      },
+    },
 
     {
       name: "Turnover",
       followers: 354753,
-      image:
-        "https://photos.bandsintown.com/thumb/9078233.jpeg",
+      image: "https://photos.bandsintown.com/thumb/9078233.jpeg",
       verified: true,
-      },
+    },
 
     {
       name: "Kanye",
@@ -87,7 +87,7 @@ function Main() {
       image:
         "https://images0.persgroep.net/rcs/xhac8jNm-5aeE2Coga0cZvwwBLk/diocontent/205406526/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.8",
       verified: true,
-      },
+    },
 
     {
       name: "Citizen",
@@ -95,7 +95,7 @@ function Main() {
       image:
         "https://m.22slides.com/alexalberti/img9668-1093870.jpg?auto=format&w=800&s=08872e9737897989ac128377e6639280",
       verified: true,
-      },
+    },
   ];
 
   //Containers
@@ -105,7 +105,7 @@ function Main() {
         <div className="bg-gradient-to-r xl:from-red-400 rounded-lg xl:px-16 py-12 mt-12 h-80 flex flex-col items-start justify-around">
           <div>
             <h1 className="text-7xl font-semibold text-white">{title}</h1>
-            <h2 className="text-3xl mt-4">{caption}</h2>
+            <h2 className="text-2xl mt-4">{caption}</h2>
           </div>
           <span className="py-2 border-white bg-white text-black font-semibold px-5 border-4 rounded-3xl mt-6">
             Try it now. <span className="ml-2">▶</span>
@@ -193,7 +193,6 @@ function Main() {
   };
 
   //Artists
-
   const ArtistCard = ({ data }) => {
     return (
       <div class="artist flex flex-col items-center w-1/5 px-4 py-4 text-gray-400">
@@ -211,11 +210,11 @@ function Main() {
         </div>
         <span className="font-semibol text-xl font-semibold mt-6 text-white flex items-center truncate">
           {data.name}
-          {
-            data.verified ? <span className="ml-2">
+          {data.verified ? (
+            <span className="ml-2">
               <GoVerified size={16} fill="white" />
-            </span> : null
-          }
+            </span>
+          ) : null}
         </span>
         <span className="text-sm mt-2">Followers {data.followers}</span>
         <span className="text-xs px-6 py-2 mt-6 border-2 rounded-full bg-white text-black font-medium">
@@ -225,7 +224,7 @@ function Main() {
     );
   };
 
-  const RowArtists = ({rowTitle}) => {
+  const RowArtists = ({ rowTitle }) => {
     return (
       <Row title={rowTitle}>
         <div className="artists px-6 flex flex-row -mx-4">
@@ -237,10 +236,58 @@ function Main() {
     );
   };
 
+  //Sub Nav
+
+  const SubNav = () => {
+    const sampleElements = [
+      {
+        value: "Hip Hop",
+        active: false,
+      },
+
+      {
+        value: "Indie",
+        active: true,
+      },
+
+      {
+        value: "POP",
+        active: false,
+      },
+
+      {
+        value: "Folk",
+        active: false,
+      },
+
+      {
+        value: "Indie",
+        active: false,
+      },
+
+    ];
+
+    return (
+      <ul className="flex justify-center px-24 mt-12 text-xl">
+        {sampleElements.map((each) => {
+          return (
+            <li
+              className={`mr-8 break-normal font-semibold rounded-full px-6 py-3 bg-opacity-50 cursor-pointer whitespace-nowrap
+              ${each.active ? "bg-red-400" : "" }`}
+              >
+              {each.value.toUpperCase()}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
+
   //Routes
   const Home = () => {
     return (
       <MainContainer title="Home" caption="Everything You need.">
+        <SubNav />
         <RowAlbums />
         <RowAlbums />
         <RowAlbums />
@@ -305,8 +352,6 @@ function Main() {
           </div>
         </div>
       </div>
-
-      {/* CONTENT */}
 
       <Routes>
         <Route exact path="/" element={<Home />} />
