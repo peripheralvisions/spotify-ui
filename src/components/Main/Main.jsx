@@ -4,6 +4,8 @@ import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { BiUserCircle } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
 
+import {GoVerified} from 'react-icons/go';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -58,33 +60,43 @@ function Main() {
     {
       name: "Pi'erre Bourne",
       followers: 354753,
-      image: "https://images.complex.com/complex/images/c_crop,h_1071,w_1061,x_0,y_11/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/lwg4ovpbq9xzybpktnno/pierre-bourne-tajwop?fimg-ssr-default",
-    },
+      image:
+        "https://images.complex.com/complex/images/c_crop,h_1071,w_1061,x_0,y_11/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/lwg4ovpbq9xzybpktnno/pierre-bourne-tajwop?fimg-ssr-default",
+      verified: true,
+      },
 
     {
       name: "Drake",
       followers: 354753,
-      image: "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTQ3NTI2OTA4NzY5MjE2MTI4/drake_photo_by_prince_williams_wireimage_getty_479503454.jpg",
-    },
+      image:
+        "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTQ3NTI2OTA4NzY5MjE2MTI4/drake_photo_by_prince_williams_wireimage_getty_479503454.jpg",
+      verified: true,
+      },
 
     {
       name: "Turnover",
       followers: 354753,
-      image: "https://alchetron.com/cdn/turnover-band-143fc96c-b4a7-40bb-a3d7-b4a01801969-resize-750.jpg",
-    },
+      image:
+        "https://alchetron.com/cdn/turnover-band-143fc96c-b4a7-40bb-a3d7-b4a01801969-resize-750.jpg",
+      verified: true,
+      },
 
     {
       name: "Kanye",
       followers: 354753,
-      image: "https://images0.persgroep.net/rcs/xhac8jNm-5aeE2Coga0cZvwwBLk/diocontent/205406526/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.8",
-    },
+      image:
+        "https://images0.persgroep.net/rcs/xhac8jNm-5aeE2Coga0cZvwwBLk/diocontent/205406526/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.8",
+      verified: true,
+      },
 
     {
-      name: "Pi'erre Bourne",
+      name: "Citizen",
       followers: 354753,
-      image: "https://images.complex.com/complex/images/c_crop,h_1071,w_1061,x_0,y_11/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/lwg4ovpbq9xzybpktnno/pierre-bourne-tajwop?fimg-ssr-default",
-    },
-  ]
+      image:
+        "https://www.upsetmagazine.com/images/article/Artist-Images/C/Citizen/_crop1500x1000/citizen-mar21.jpg",
+      verified: true,
+      },
+  ];
 
   //Containers
   const MainContainer = ({ children, title, caption = "Music awaits." }) => {
@@ -104,16 +116,14 @@ function Main() {
     );
   };
 
-  const Row = ({ children, title }) => {
+  const Row = ({ children, title = "Category" }) => {
     return (
-      <div className="row mt-12 ">
-        <div className="row">
-          <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-4">
-            {title}
-          </h3>
+      <div className="row mt-12">
+        <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-4">
+          {title}
+        </h3>
 
-          {children}
-        </div>
+        {children}
       </div>
     );
   };
@@ -184,38 +194,44 @@ function Main() {
 
   //Artists
 
-  const ArtistCard = ({data}) => {
+  const ArtistCard = ({ data }) => {
     return (
       <div class="artist flex flex-col items-center w-1/5 px-4 py-4 text-gray-400">
-        <div className="overflow-hidden block h-44 w-44 rounded-full" style={{
+        <div
+          className="overflow-hidden block h-44 w-44 rounded-full"
+          style={{
             backgroundImage: `url("${data.image}")`,
-            backgroundColor: 'pink',
+            backgroundColor: "pink",
             backgroundPosition: "center center",
             backgroundSize: "cover",
-            backgroundRepeat: 'no-repeat'
-          }}>
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           {/* <img src={data.image} className="w-auto h-full" alt="qweqeqw" /> */}
         </div>
-        <span className="font-semibol text-xl font-semibold mt-6 text-gray-300">
+        <span className="font-semibol text-xl font-semibold mt-6 text-gray-300 flex items-center">
           {data.name}
+          {
+            data.verified ? <span className="ml-2">
+              <GoVerified size={16} fill="white" />
+            </span> : null
+          }
         </span>
-        <span className="text-sm mt-2">
-          Followers {data.followers}
-        </span>
-        <span className="text-sm px-6 py-2 mt-8 border-2 rounded-full bg-white text-black font-medium">
+        <span className="text-sm mt-2">Followers {data.followers}</span>
+        <span className="text-sm px-6 py-2 mt-6 border-2 rounded-full bg-white text-black font-medium">
           + FOLLOW
         </span>
       </div>
     );
   };
 
-  const RowArtists = () => {
+  const RowArtists = ({rowTitle}) => {
     return (
-      <Row>
-        <div className="albums flex flex-row -mx-4">
-          {
-            artists.map(each => <ArtistCard data={each} />)
-          }
+      <Row title={rowTitle}>
+        <div className="artists px-6 flex flex-row -mx-4">
+          {artists.map((each) => (
+            <ArtistCard data={each} />
+          ))}
         </div>
       </Row>
     );
@@ -237,10 +253,10 @@ function Main() {
   const Browse = () => {
     return (
       <MainContainer title="Browse" caption="Find new music.">
-        <RowArtists />
-        <RowArtists />
-        <RowArtists />
-        <RowArtists />
+        <RowArtists rowTitle="New Artists" />
+        <RowArtists rowTitle="Fresh Talent" />
+        <RowArtists rowTitle="Up and coming" />
+        <RowArtists rowTitle="Young Stars" />
       </MainContainer>
     );
   };
