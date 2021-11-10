@@ -177,6 +177,7 @@ function Main() {
   const Radio = () => {
     return (
       <MainContainer title="Radio">
+        <h2 className="text-4xl">Find new tunes.</h2>
         <RowAlbums />
         <RowAlbums />
       </MainContainer>
