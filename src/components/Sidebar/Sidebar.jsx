@@ -6,7 +6,7 @@ import {VscRadioTower} from 'react-icons/vsc';
 
 import {IoIosAddCircleOutline} from 'react-icons/io';
 
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 
 console.log(AiOutlineHome);
 
@@ -74,8 +74,8 @@ function Sidebar() {
   const NavElement = ({ value, active, customSvg: CustomSvg }) => {
 
     return (
-      <li className={`border-l-4 ${active ? "border-green-700" : "border-transparent"}`}>
-        <a href="#" className="flex items-center mx-4 mt-4">
+      <li className={`border-l-4 border-transparent`}>
+        <a className="flex items-center mx-4 mt-4">
           <CustomSvg size={20}/>
           <span className="ml-3">{value}</span>
         </a>
@@ -88,9 +88,12 @@ function Sidebar() {
       <div className="py-6">
         <ul>
           {navElements.map((each, idx, self) => {
-            return <Link to={each.value.toLocaleLowerCase()}>
+            return <NavLink exact to={'/' + each.value.toLocaleLowerCase()} className={({isActive}) => {
+              // console.log(isActive.isActive);
+              return isActive ? "text-white" : ""
+            }}>
               <NavElement key={idx} {...each} />
-            </Link>;
+            </NavLink>;
           })}
         </ul>
       </div>
