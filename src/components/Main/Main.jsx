@@ -39,7 +39,7 @@ function Main() {
       artist: "Turnover",
     },
     {
-      title: "Pi'erre Bourne: The Life of Pi'erre 5",
+      title: "The Life of Pi'erre 5",
       description: "Amazing Acoustic Covers updated every week.",
       followers: 876457,
       cover:
@@ -57,13 +57,15 @@ function Main() {
   //Containers
   const MainContainer = ({ children, title, caption = "Music awaits." }) => {
     return (
-      <div className="container mx-auto px-8 text-white">
-        <div className="bg-gradient-to-r xl:from-red-400 rounded-lg px-24 -mx-24 py-8 mt-12 h-72 flex flex-col items-start justify-around">
+      <div className="container mx-auto px-16 text-white">
+        <div className="bg-gradient-to-r xl:from-red-400 rounded-lg xl:px-16 py-12 mt-12 h-80 flex flex-col items-start justify-around">
           <div>
             <h1 className="text-7xl font-semibold text-white">{title}</h1>
             <h2 className="text-3xl mt-4">{caption}</h2>
           </div>
-          <span className="py-2 border-white bg-white text-black font-semibold px-5 border-4 rounded-3xl mt-6">Try it now. <span className="ml-2">▶</span></span>
+          <span className="py-2 border-white bg-white text-black font-bold px-5 border-4 rounded-3xl mt-6">
+            Try it now. <span className="ml-2">▶</span>
+          </span>
         </div>
 
         {children}
@@ -117,9 +119,9 @@ function Main() {
   const AlbumCard = ({ data }) => {
     return (
       <div class="album flex flex-col w-1/5 px-4 py-4 text-gray-400">
-        <a href="">
-          <img src={data.cover} alt="qweqeqw" />
-        </a>
+        <div className="rounded-md overflow-hidden block">
+          <img src={data.cover} className="block" alt="qweqeqw" />
+        </div>
         <span className="font-semibold mb-2 mt-4 text-gray-300">
           {data.title}
         </span>
@@ -183,32 +185,38 @@ function Main() {
   };
 
   return (
-    <div className="overflow-y-auto flex-1 bg-gray-800-spotify">
+    <div className="overflow-y-auto flex-1 bg-gray-800-spotify py-2">
       {/* TOP BAR  */}
-      <div className="top-bar flex items-center justify-between px-4 py-2">
-        <div className="arrows flex items-center text-gray-300">
-          <a href="" className="p-1 fill-current">
-            <VscChevronLeft size={30} />
-          </a>
-          <a href="" className="p-1 fill-current">
-            <VscChevronRight size={30} />
-          </a>
+      <div className="top-bar flex flex-row items-start mt-8">
+        <div></div>
 
-          <div className="searchbar ml-4 box-border searchbar flex relative items-center">
-            <div className="absolute ml-2">
-              <AiOutlineSearch size={18} />
+        <div className="container mx-auto self-center flex flex-row justify-between px-16">
+          <div className="flex flex-row">
+            <div className="arrows mr-4 flex items-center text-gray-300">
+              <a href="" className=" fill-current">
+                <VscChevronLeft size={40} />
+              </a>
+              <a href="" className=" fill-current">
+                <VscChevronRight size={40} />
+              </a>
             </div>
-            <input
-              className=" text-gray-800 placeholder-gray-800 rounded-full pl-8 py-1"
-              type="text"
-              placeholder="Search..."
-            />
-          </div>
-        </div>
 
-        <div className="username flex items-center px-8 text-gray-300">
-          <BiUserCircle size={24} />
-          <span className="ml-2 text-sm">b.pre</span>
+            <div className="searchbar relative flex items-center">
+              <div className="absolute ml-2">
+                <AiOutlineSearch size={18} />
+              </div>
+              <input
+                className=" text-gray-800 placeholder-gray-800 rounded-full pl-8 py-1 w-96"
+                type="text"
+                placeholder="Search..."
+              />
+            </div>
+          </div>
+
+          <div className="username flex items-center text-gray-300">
+            <BiUserCircle size={24} />
+            <span className="text-sm ml-1">USER</span>
+          </div>
         </div>
       </div>
 
