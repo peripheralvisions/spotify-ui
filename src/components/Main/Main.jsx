@@ -6,6 +6,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 import { GoVerified } from "react-icons/go";
 
+import './slide.css';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,9 +15,14 @@ import {
   Link,
   Navigate,
   Redirect,
+  useLocation,
 } from "react-router-dom";
 
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 function Main() {
+  let location = useLocation();
+
   //Demo data
   const albums = [
     {
@@ -264,7 +271,6 @@ function Main() {
         value: "Indie",
         active: false,
       },
-
     ];
 
     return (
@@ -273,8 +279,8 @@ function Main() {
           return (
             <li
               className={`mr-8 break-normal font-semibold rounded-full px-6 py-3 bg-opacity-50 cursor-pointer whitespace-nowrap
-              ${each.active ? "bg-red-400" : "" }`}
-              >
+              ${each.active ? "bg-red-400" : ""}`}
+            >
               {each.value.toUpperCase()}
             </li>
           );
@@ -353,12 +359,16 @@ function Main() {
         </div>
       </div>
 
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/home" element={<Home />} />
-        <Route exact path="/browse" element={<Browse />} />
-        <Route exact path="/radio" element={<Radio />} />
-      </Routes>
+      <TransitionGroup>
+        <CSSTransition key={location.key} classNames='slide' timeout={1000}>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/home" element={<Home />} />
+            <Route exact path="/browse" element={<Browse />} />
+            <Route exact path="/radio" element={<Radio />} />
+          </Routes>
+        </CSSTransition>
+      </TransitionGroup>
     </div>
   );
 }

@@ -1,0 +1,34 @@
+
+
+/* R E M E M B E R   T O   R E F R E S H */
+
+.slide-enter,
+.slide-exit {
+  transition: transform 600ms ease, opacity 400ms ease-in, margin 800ms ease-in-out;
+  transform-origin: top center;
+}
+
+/* CLASS THAT APPLIES TO NEWLY ADDED ELEMENT */
+
+.slide-enter {
+  margin-top: 100px;
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+/* CLASS WITH RESULTING STATE OF ADDED ELEMENT */
+
+/* .slide-enter, .slide-enter-active { */
+.slide-enter-active {
+  transform: scale(1);
+  margin-top: 0px;
+  opacity: 1;
+}
+
+.slide-exit {
+
+}
+
+.slide-exit-active {
+  display: none;
+}
