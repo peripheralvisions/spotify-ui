@@ -49,9 +49,9 @@ function Player() {
               <IoMdRepeat size={21} />
             </div>
           </div>
-          <div className="main-controls-progress flex items-center">
+          <div className="main-controls-progress flex items-center justify-center">
             <span>1:36</span>
-            <div className="line w-96 h-1 rounded-xl mx-4 bg-gray-400"></div>
+            <div className="line w-36 lg:w-96 h-1 rounded-xl mx-4 bg-gray-400"></div>
             3:42
           </div>
         </div>

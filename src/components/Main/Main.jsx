@@ -102,12 +102,12 @@ function Main() {
   const MainContainer = ({ children, title, caption = "Music awaits." }) => {
     return (
       <div className="container mx-auto px-16 text-white">
-        <div className="bg-gradient-to-r xl:from-red-400 rounded-lg xl:px-16 py-12 mt-12 h-80 flex flex-col items-start justify-around">
+        <div className="bg-gradient-to-r from-red-400 rounded-lg px-16 py-12 mt-12 h-48 lg:h-80 flex flex-col items-start justify-around">
           <div>
-            <h1 className="text-7xl font-semibold text-white">{title}</h1>
-            <h2 className="text-2xl mt-4">{caption}</h2>
+            <h1 className="text-2xl lg:text-7xl font-semibold text-white">{title}</h1>
+            <h2 className="text-lg lg:text-2xl mt-2 lg:mt-4">{caption}</h2>
           </div>
-          <span className="py-2 border-white bg-white text-black font-semibold px-5 border-4 rounded-3xl mt-6">
+          <span className="py-1 lg:py-2 text-sm border-white bg-white text-black font-semibold px-5 border-4 rounded-3xl mt-6">
             Try it now. <span className="ml-2">▶</span>
           </span>
         </div>
@@ -118,8 +118,8 @@ function Main() {
 
   const Row = ({ children, title = "Category" }) => {
     return (
-      <div className="row mt-12">
-        <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-12">
+      <div className="row mt-6 lg:mt-12">
+        <h3 className="font-semibold text-xl border-b border-gray-750 pb-4 mb-6 lg:mb-12">
           {title}
         </h3>
 
@@ -197,7 +197,7 @@ function Main() {
     return (
       <div class="artist flex flex-col items-center w-1/5 px-4 py-4 text-gray-400">
         <div
-          className="overflow-hidden block h-44 w-44 rounded-full"
+          className="overflow-hidden block h-24 w-24 lg:h-44 lg:w-44  rounded-full"
           style={{
             backgroundImage: `url("${data.image}")`,
             backgroundColor: "pink",
@@ -206,9 +206,9 @@ function Main() {
             backgroundRepeat: "no-repeat",
           }}
         >
-          {/* <img src={data.image} className="w-auto h-full" alt="qweqeqw" /> */}
+
         </div>
-        <span className="font-semibol text-xl font-semibold mt-6 text-white flex items-center truncate">
+        <span className="font-semibol text-sm lg:text-xl font-semibold mt-6 text-white flex items-center truncate">
           {data.name}
           {data.verified ? (
             <span className="ml-2">
@@ -216,8 +216,8 @@ function Main() {
             </span>
           ) : null}
         </span>
-        <span className="text-sm mt-2">Followers {data.followers}</span>
-        <span className="text-xs px-6 py-2 mt-6 border-2 rounded-full bg-white text-black font-medium">
+        <span className="text-sm mt-2 text-center">Followers {data.followers}</span>
+        <span className="text-xs px-6 py-2 mt-6 border-2 rounded-full bg-white text-black font-medium whitespace-nowrap">
           + FOLLOW
         </span>
       </div>
@@ -272,7 +272,10 @@ function Main() {
         {sampleElements.map((each) => {
           return (
             <li
-              className={`mr-8 break-normal font-semibold rounded-full px-6 py-3 bg-opacity-50 cursor-pointer whitespace-nowrap
+              className={`
+              mr-8 break-normal text-sm font-semibold rounded-full bg-opacity-50 cursor-pointer whitespace-nowrap
+              px-3 py-2
+              lg:text-lg lg:px-6 lg:py-3
               ${each.active ? "bg-red-400" : "" }`}
               >
               {each.value.toUpperCase()}
