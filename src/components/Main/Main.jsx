@@ -217,8 +217,8 @@ function Main() {
           ) : null}
         </span>
         <span className="text-sm mt-2 text-center">Followers {data.followers}</span>
-        <span className="text-xs px-6 py-2 mt-6 border-2 rounded-full bg-white text-black font-medium whitespace-nowrap">
-          + FOLLOW
+        <span className="text-xs px-3 py-1 lg:px-6 lg:py-2 mt-6 border-2 rounded-full bg-white text-black font-medium whitespace-nowrap">
+          <span className="text-base">+</span> <span className="hidden lg:inline-block font-semibold">FOLLOW</span>
         </span>
       </div>
     );
