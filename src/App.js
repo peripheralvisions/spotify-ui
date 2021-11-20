@@ -4,6 +4,7 @@ import "./App.css";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import Player from "./components/Player/Player.jsx";
 import Main from "./components/Main/Main.jsx";
+import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
 
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
 
@@ -14,6 +15,7 @@ function App() {
         <div className="top flex-1 flex overflow-y-hidden">
           <Sidebar />
           <Main />
+          <SocialSidebar />
         </div>
 
         <div className="bottom">

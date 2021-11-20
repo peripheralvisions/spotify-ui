@@ -6,7 +6,11 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 import { GoVerified } from "react-icons/go";
 
+//Slide Transition on Route Change
 import './slide.css';
+
+//Sway BG
+import "./bg-element-motion.css";
 
 import {
   BrowserRouter as Router,
@@ -108,15 +112,24 @@ function Main() {
   //Containers
   const MainContainer = ({ children, title, caption = "Music awaits." }) => {
     return (
-      <div className="container mx-auto px-16 text-white">
-        <div className="bg-gradient-to-r xl:from-red-400 rounded-lg xl:px-16 py-12 mt-12 h-80 flex flex-col items-start justify-around">
-          <div>
-            <h1 className="text-7xl font-semibold text-white">{title}</h1>
-            <h2 className="text-2xl mt-4">{caption}</h2>
+      <div className="mx-auto px-16 text-white">
+        {/* <div className="bg-gradient-to-r xl:from-red-400 rounded-lg xl:px-16 py-12 mt-12 h-80 flex flex-col items-start justify-around"> */}
+        <div className="bg-element relative xl:px-16 py-12 mt-12 h-80 flex flex-col items-start justify-around overflow-hidden rounded-xl" style={{
+          backgroundImage: 'url("https://images.unsplash.com/photo-1633427370898-c40eceefb26c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80")',
+          backgroundSize: 'cover',
+          backgroundPosition: '50% 50%'
+        }}>
+          <div className="absolute w-full h-full bg-gradient-to-r xl:from-red-400 top-0 left-0 z-0"></div>
+          {/* C O N T E N T  */}
+          <div className="z-10">
+            <div>
+              <h1 className="text-7xl font-semibold text-white">{title}</h1>
+              <h2 className="text-2xl mt-4">{caption}</h2>
+            </div>
+            <h2 className="py-2 inline-block border-white bg-white text-black font-semibold px-5 border-4 rounded-3xl mt-6">
+              Try it now. <span className="ml-2">▶</span>
+            </h2>
           </div>
-          <span className="py-2 border-white bg-white text-black font-semibold px-5 border-4 rounded-3xl mt-6">
-            Try it now. <span className="ml-2">▶</span>
-          </span>
         </div>
         {children}
       </div>
@@ -166,9 +179,9 @@ function Main() {
 
   const AlbumCard = ({ data }) => {
     return (
-      <div class="album flex flex-col w-1/5 px-4 py-4 text-gray-400">
-        <div className="rounded-sm overflow-hidden block">
-          <img src={data.cover} className="block" alt="qweqeqw" />
+      <div class="album flex flex-col flex-1 px-4 py-4 text-gray-400">
+        <div className="rounded-sm flex-1 overflow-hidden block">
+          <img src={data.cover} className="block h-full" alt="qweqeqw" />
         </div>
         <span className="font-semibold mb-2 mt-4 text-gray-300">
           {data.title}
@@ -184,9 +197,6 @@ function Main() {
   };
 
   const RowAlbums = () => {
-    const dummyArr = scrambleArray(albums);
-    console.log(dummyArr);
-
     return (
       <Row title="Recently Played">
         <div className="row">
@@ -324,12 +334,10 @@ function Main() {
   };
 
   return (
-    <div className="overflow-y-auto flex-1 bg-gray-800-spotify py-2">
+    <div className=" flex-1 overflow-y-scroll bg-gray-800-spotify py-2">
       {/* TOP BAR  */}
-      <div className="top-bar flex flex-row items-start mt-8">
-        <div></div>
-
-        <div className="container mx-auto self-center flex flex-row justify-between px-16">
+      <div className="top-bar flex flex-row items-start mt-8 w-full">
+        <div className="flex flex-row justify-between px-16 w-full">
           <div className="flex flex-row">
             <div className="arrows mr-4 flex items-center text-gray-300">
               <a href="" className=" fill-current">

@@ -1,0 +1,20 @@
+.bg-element {
+    /* transition: background-position 3s ease-in-out; */
+    animation: swayBackgroundPosition 12s infinite;
+    animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+    
+}
+
+@keyframes swayBackgroundPosition {
+    from {
+        background-position: 50% 50%;
+    } 
+
+    50% {
+        background-position: 70% 70%;
+    }
+
+    100% {
+        background-position: 50% 50%;
+    }
+}

@@ -1,12 +1,12 @@
 import React from "react";
 
-import {AiOutlineHome} from "react-icons/ai";
-import {BsSearch} from 'react-icons/bs';
-import {VscRadioTower} from 'react-icons/vsc';
+import { AiOutlineHome } from "react-icons/ai";
+import { BsSearch } from 'react-icons/bs';
+import { VscRadioTower } from 'react-icons/vsc';
 
-import {IoIosAddCircleOutline} from 'react-icons/io';
+import { IoIosAddCircleOutline } from 'react-icons/io';
 
-import {Link, NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 console.log(AiOutlineHome);
 
@@ -74,9 +74,9 @@ function Sidebar() {
   const NavElement = ({ value, active, customSvg: CustomSvg }) => {
 
     return (
-      <li className={`border-l-4 border-transparent`}>
+      <li className={`border-l-4 border-transparent transition-colors duration-500`}>
         <a className="flex items-center mx-4 mt-4">
-          <CustomSvg size={20}/>
+          <CustomSvg size={20} />
           <span className="ml-3">{value}</span>
         </a>
       </li>
@@ -84,21 +84,21 @@ function Sidebar() {
   };
 
   return (
-    <div className="Sidebar w-48 flex-none overflow-y-hidden flex flex-col justify-between font-semibold bg-gray-900-spotify text-gray-400">
+    <div className="Sidebar w-48 flex-none flex flex-col justify-between font-semibold bg-gray-900-spotify text-gray-400">
       <div className="py-6">
         <ul>
           {navElements.map((each, idx, self) => {
-            return <NavLink exact to={'/' + each.value.toLocaleLowerCase()} className={({isActive}) => {
-              // console.log(isActive.isActive);
-              return isActive ? "text-white" : ""
-            }}>
+            return <NavLink
+              exact to={'/' + each.value.toLocaleLowerCase()}
+              className={({ isActive }) => isActive ? "text-white" : ""}
+              >
               <NavElement key={idx} {...each} />
             </NavLink>;
           })}
         </ul>
       </div>
 
-      <div className="overflow-hidden flex-1">
+      <div className="overflow-x-hidden flex-1">
         {/* //Your Playlsist */}
 
         {sidebarGroups.map((each) => {
@@ -108,7 +108,7 @@ function Sidebar() {
               <ul>
                 {each.content.map((each) => {
                   return <li className="truncate text-gray-300 text-sm mt-4">
-                      <a href="">{each}</a>
+                    <a href="">{each}</a>
                   </li>;
                 })}
               </ul>
@@ -120,7 +120,7 @@ function Sidebar() {
 
       <div className="h-16 flex align-center justify-around items-center border-t border-gray-400 ">
         <a href="" className="flex items-center">
-            <IoIosAddCircleOutline size={30} />
+          <IoIosAddCircleOutline size={30} />
           <span className="ml-3">New Playlist</span>
         </a>
 
