@@ -6,7 +6,7 @@ For the purpose of experimenting with TailwindCSS I decided to clone the interfa
 This is just the front-end and the application is not interactive (yet).
 
 Demo:
-![Demo](https://i.imgur.com/Sq4kW36.png)
+![Demo](https://i.imgur.com/dsVjcDb.png)
 
 ## Made with:
 * TailwindCSS
