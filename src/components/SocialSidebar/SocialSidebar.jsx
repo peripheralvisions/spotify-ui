@@ -64,7 +64,7 @@ const SocialUserPost = () => {
                     </div>
 
                     <div className="self-start text-sm">
-                        <span className="flex-shrink-0 whitespace-nowrap">23 min</span>
+                        <span className="flex-shrink-0 whitespace-nowrap bg-gray-700-spotify px-4 ml-2 rounded-full text-xs opacity-70 py-2 inline-block">23 min</span>
                     </div>
                 </div>
             </div>
