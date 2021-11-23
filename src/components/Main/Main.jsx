@@ -112,7 +112,7 @@ function Main() {
   //Containers
   const MainContainer = ({ children, title, caption = "Music awaits." }) => {
     return (
-      <div className="mx-auto px-16 text-white">
+      <div className="container mx-auto text-white">
         {/* <div className="bg-gradient-to-r xl:from-red-400 rounded-lg xl:px-16 py-12 mt-12 h-80 flex flex-col items-start justify-around"> */}
         <div className="bg-element relative xl:px-16 py-12 mt-12 h-80 flex flex-col items-start justify-around overflow-hidden rounded-xl" style={{
           backgroundImage: 'url("https://images.unsplash.com/photo-1633427370898-c40eceefb26c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80")',
@@ -198,7 +198,8 @@ function Main() {
 
   const RowAlbums = () => {
     return (
-      <Row title="Recently Played">
+      <div className="container mx-auto">
+        <Row title="Recently Played">
         <div className="row">
           {/* ALBUMS GO HERE */}
           <div className="albums flex flex-row -mx-4">
@@ -206,6 +207,7 @@ function Main() {
           </div>
         </div>
       </Row>
+      </div>
     );
   };
 
@@ -243,13 +245,15 @@ function Main() {
 
   const RowArtists = ({ rowTitle }) => {
     return (
-      <Row title={rowTitle}>
+      <div className="container mx-auto">
+        <Row title={rowTitle}>
         <div className="artists px-6 flex flex-row -mx-4">
           {scrambleArray(artists).map((each) => (
             <ArtistCard data={each} />
           ))}
         </div>
       </Row>
+      </div>
     );
   };
 
